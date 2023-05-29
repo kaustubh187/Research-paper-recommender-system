@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Bebas+Neue&family=Koulen&family=Merriweather:ital,wght@1,400;1,900&family=Montserrat&family=Noto+Serif&family=Playfair+Display:ital,wght@1,700&family=Spectral:wght@600&display=swap');
+     
+        .html { overflow-y: scroll; overflow-x:hidden; }
+      .cardcon {
+        position: relative;
+        background-color: rgba(172, 255, 47, 0);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 3 columns */
+        grid-gap: 15px; /* gap between cards */
+        left: 5%;
+        top: 60%;
+        align-items: center;
+      justify-items: center;
+        /* justify-content: space-between; */
+        width: 90%;
+       
+      }
+      
+      .card {
+        position: relative;
+        text-align: center;
+        top: 10%;
+        /* height: 80%; */
+        width: 70%;
+        padding: 5px;
+        background-color: #7d889c;
+        border-radius: 22px;
+        transition: 0.4s ease-in-out;
+      }
+      .card:hover{
+        background-color: #C2C5BB;
+      }
+      .card p{
+        font-size: 1.2vw;
+      }
+      .card {
+        position: relative;
+        text-align: center;
+        top: 10%;
+        /* height: 80%; */
+        width: 80%;
+        padding: 45px;
+        padding-bottom: 10px;
+        background-color: #596475;
+        border-radius: 22px;
+        transition: 0.4s ease-in-out;
+      }
+      .card:hover{
+        background-color: #F7EBEC;
+      }
+      .card h1{
+        font-family: 'Montserrat', sans-serif;
+      }
+      .card p{
+        font-size: 1.3vw;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: rgb(0, 0, 0);
+
+      }
+      .card a{
+        font-size: 1.3vw;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #ccb7ae00;
+        align-content: center;
+        text-align: center;
+        height: 40px;
+        color: black;
+        text-decoration: none;
+        margin: 15px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        transition: 0.5s ease-in-out;
+      }
+      .card a:hover{
+        letter-spacing: 1.3px;
+        color: #102b54;
+      }
+      .heading{
+        background-color: rgba(0, 128, 128, 0);
+        position: relative;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        height: 100px;
+      }
+      .heading h1{
+        position: relative;
+        color: #FDE8E9;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        top: 20px;
+        font-size: 1.3vw;
+      }
+      .links a{
+        font-size: 1.1vw;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body style="background-color: #1F2232;">
+    <div class="heading">
+      <h1>Recommendations for: {{title}}</h1>
+    </div>
+    <div class="cardcon">
+      {% for i in props %}
+      <div class="card">
+        <h1>{{ props[i].title}}</h1>
+        <p>Authors: {{props[i].authors}}</p>
+        <p>Categories: {{props[i].categories}}</p>
+        <div class="links" style="display: flex;">
+          <a href="{{url_for('paper_info',rid=props[i].id)}}" style="flex: 1; margin-left: 1px;">Get details</a>
+        <a href="{{url_for('recocluster',id=props[i].id)}}" style="flex: 2; text-align: center;">Get cluster</a>
+        <a href="{{url_for('rec_results',rid=props[i].id,n=10)}}" style="flex: 1; margin-right: 1px;">Get recommendations</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

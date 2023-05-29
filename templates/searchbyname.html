@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Bebas+Neue&family=Koulen&family=Merriweather:ital,wght@1,400;1,900&family=Montserrat&family=Noto+Serif&family=Playfair+Display:ital,wght@1,700&family=Spectral:wght@600&display=swap');
+     .search-container {
+        height: 120px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 170px;
+        text-align: center; /* add this property to center align the search bar */
+        background-color: #25283000;
+}
+
+.search-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container input[type="text"]{
+    height: 60px;
+    width: 620px;
+  padding: 10px;
+  font-family:'Montserrat',sans-serif ;
+  font-size: 38px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+.search-container select {
+  height: 60px;
+  padding: 10px;
+  font-size: 28px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.search-container select {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.search-container button[type="submit"] {
+  height: 60px;
+  padding: 0 20px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 28px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.titles{
+    position: relative;
+    top: 50px;
+    width: 100%;
+    background-color: #66666600;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+  .titles h1
+  {
+      color: white;
+      font-size: 3.7vw;
+      font-weight: 1300;
+      font-family: 'Montserrat', sans-serif;
+      margin: auto;
+  }
+.search-container button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+
+    </style>
+</head>
+<body style="background-color: #1F2232;">
+    <div class="titles">
+        <h1>Search for Research Papers</h1>
+    </div>
+    <div class="search-container">
+        <form action="{{url_for('searchname')}}" class="search-bar" method="post">
+          <input type="text" name="rname" id="rname" placeholder="Search...">
+          <select name="npapers">
+            <option value="10">Number of Results</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
+          <button type="submit" name="action" value="Enter">Search</button>
+        </form>
+      </div>
+      
+</body>
+</html>

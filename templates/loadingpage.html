@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster</title>
+    <script>
+        let graph;
+       function navigate() {
+        window.location.href = "{{url_for('final_graph',graph=graph)}}"; // redirect when done!
+    }
+
+    function loadSlowUrl() {
+        // replace "recocluster" with the name of your function that returns the variable
+        fetch("{{url_for('recocluster',id=rid)}}").then(function(response) {
+            // assuming the response is a JSON object, extract the variable to be fed to the URL
+            return response.text();
+        }).then(function(data) {
+            // replace "variableName" with the name of the variable returned by your function
+            console.log(typeof data);
+            graph =encodeURIComponent(data.graph_html);
+            navigate(); // call the navigate function with the updated variable
+        });
+    }
+
+    loadSlowUrl();
+      </script>
+</head>
+<body>
+    Loading...
+</body>
+</html>
